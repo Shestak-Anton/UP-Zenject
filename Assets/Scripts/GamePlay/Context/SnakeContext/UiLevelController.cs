@@ -1,60 +1,26 @@
 using System;
+using GameContext.Config;
 using GameContext.Level;
-using GamePlay.Context.SnakeContext;
-using Modules;
 using SnakeGame;
 using Zenject;
 
 namespace GameContext
 {
-    public sealed class UiScoreController : IInitializable, IDisposable
-    {
-        private readonly ICoinCollectionProvider _coinCollectionProvider;
-        private readonly IGameUI _gameUI;
-
-        private int Score;
-
-        public UiScoreController(ICoinCollectionProvider coinCollectionProvider, IGameUI gameUI)
-        {
-            _coinCollectionProvider = coinCollectionProvider;
-            _gameUI = gameUI;
-        }
-
-        void IInitializable.Initialize()
-        {
-            UpdateUi(Score);
-            _coinCollectionProvider.OnCoinCollected += OnCoinCollected;
-        }
-
-        void IDisposable.Dispose()
-        {
-            _coinCollectionProvider.OnCoinCollected -= OnCoinCollected;
-        }
-
-        private void OnCoinCollected(ICoin coin)
-        {
-            Score += coin.Score;
-            UpdateUi(Score);
-        }
-
-        private void UpdateUi(int score)
-        {
-            _gameUI.SetScore(score.ToString());
-        }
-    }
-
     public sealed class UiLevelController : IInitializable, IDisposable
     {
         private readonly IGameUI _gameUI;
         private readonly ILevelChangedProvider _levelChangedProvider;
+        private readonly GameConfig _gameConfig;
 
         [Inject]
         public UiLevelController(
             IGameUI gameUI,
-            ILevelChangedProvider levelChangedProvider)
+            ILevelChangedProvider levelChangedProvider, 
+            GameConfig gameConfig)
         {
             _gameUI = gameUI;
             _levelChangedProvider = levelChangedProvider;
+            _gameConfig = gameConfig;
         }
 
         void IInitializable.Initialize()
@@ -70,7 +36,7 @@ namespace GameContext
 
         private void OnLevelChanged(int level)
         {
-            _gameUI.SetDifficulty(current: level, max: 9);
+            _gameUI.SetDifficulty(current: level, max: _gameConfig.MaxLevelCount);
         }
     }
 }

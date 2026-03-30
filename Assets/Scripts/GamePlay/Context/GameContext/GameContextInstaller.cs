@@ -1,3 +1,4 @@
+using GameContext.Config;
 using GameContext.Level;
 using GamePlay.CoinContext;
 using SampleGame;
@@ -12,6 +13,8 @@ namespace GameContext
         [SerializeField] private CoinContextInstaller _coinContextInstaller;
         [SerializeField] private GameUI _gameUi;
         [SerializeField] private WorldBounds _worldBounds;
+
+        [Header("Config")] [SerializeField] private GameConfig _gameConfig;
 
         public override void InstallBindings()
         {
@@ -34,6 +37,9 @@ namespace GameContext
                 .AsSingle();
             Container
                 .BindInterfacesTo<CoinSpawnController>()
+                .AsSingle();
+            Container
+                .BindInstance(_gameConfig)
                 .AsSingle();
         }
     }

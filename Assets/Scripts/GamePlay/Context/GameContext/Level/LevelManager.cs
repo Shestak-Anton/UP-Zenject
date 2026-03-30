@@ -6,12 +6,12 @@ namespace GameContext.Level
     {
         public event Action<int> OnLevelChanged;
 
-        public int CurrentLevel { get; private set; } = 1;
+        private int _currentLevel = 1;
 
         public void IncreateLevel()
         {
-            CurrentLevel++;
-            OnLevelChanged?.Invoke(CurrentLevel);
+            _currentLevel++;
+            OnLevelChanged?.Invoke(_currentLevel);
         }
     }
 }

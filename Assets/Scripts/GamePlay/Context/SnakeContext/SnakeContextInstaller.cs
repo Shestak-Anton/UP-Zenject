@@ -18,34 +18,34 @@ namespace GamePlay.SnakeContext
                 .FromInstance(_snake)
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<InputProvider>()
+                .BindInterfacesTo<InputProvider>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<UiGameOverController>()
+                .BindInterfacesTo<UiGameOverController>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<UiGameWinController>()
+                .BindInterfacesTo<UiGameWinController>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<InputObserver>()
+                .BindInterfacesTo<InputObserver>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<CollideBoundDetector>()
+                .BindInterfacesTo<CollideBoundDetector>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<CoinCollectionController>()
+                .BindInterfacesTo<CoinCollectionController>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<SnakeGainerController>()
+                .BindInterfacesTo<SnakeGainerController>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<SpeedController>()
+                .BindInterfacesTo<SpeedController>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<UiLevelController>()
+                .BindInterfacesTo<UiLevelController>()
                 .AsSingle();
             Container
-                .BindInterfacesAndSelfTo<UiScoreController>()
+                .BindInterfacesTo<UiScoreController>()
                 .AsSingle();
         }
     }

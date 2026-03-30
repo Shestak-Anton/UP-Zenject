@@ -8,11 +8,11 @@ namespace GameContext
 {
     public sealed class InputObserver : IInitializable, IDisposable
     {
-        private readonly InputProvider _inputProvider;
+        private readonly IInputProvider _inputProvider;
         private readonly ISnake _snake;
 
         [Inject]
-        public InputObserver(InputProvider inputProvider, ISnake snake)
+        public InputObserver(IInputProvider inputProvider, ISnake snake)
         {
             _inputProvider = inputProvider;
             _snake = snake;

@@ -1,4 +1,5 @@
 using System;
+using GameContext.Config;
 using GameContext.Level;
 using SnakeGame;
 using Zenject;
@@ -9,12 +10,14 @@ namespace GameContext
     {
         private readonly ILevelChangedProvider _levelChangedProvider;
         private readonly IGameUI _gameUI;
+        private readonly GameConfig _gameConfig;
 
         [Inject]
-        public UiGameWinController(ILevelChangedProvider levelChangedProvider, IGameUI gameUI)
+        public UiGameWinController(ILevelChangedProvider levelChangedProvider, IGameUI gameUI, GameConfig gameConfig)
         {
             _levelChangedProvider = levelChangedProvider;
             _gameUI = gameUI;
+            _gameConfig = gameConfig;
         }
 
         void IInitializable.Initialize()
@@ -29,7 +32,7 @@ namespace GameContext
 
         private void OnLevelChanged(int level)
         {
-            if (level <= 9) return;
+            if (level <= _gameConfig.MaxLevelCount) return;
             _gameUI.GameOver(true);
         }
     }
