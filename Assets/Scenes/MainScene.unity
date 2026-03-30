@@ -1435,6 +1435,7 @@ MonoBehaviour:
     _worldBounds: {fileID: 1431199845}
   _gameUi: {fileID: 1764093826}
   _worldBounds: {fileID: 1431199845}
+  _gameConfig: {fileID: 11400000, guid: de032a2b30a3941bdaa2ae9e0fd6a015, type: 2}
 --- !u!4 &1841319825
 Transform:
   m_ObjectHideFlags: 0

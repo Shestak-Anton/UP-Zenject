@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23f61876542469c85cfa5513ad8d445, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: Game::GameContext.Config.GameConfig
-  <MaxLevelCount>k__BackingField: 0
+  <MaxLevelCount>k__BackingField: 9
